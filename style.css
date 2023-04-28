@@ -6,11 +6,11 @@
 }
 
 body {
-  background-color: beige;
+  background-color: #8d7b68;
 }
 
 .container {
-  background-color: coral;
+  background-color: #f1dec9;
   width: 80%;
   max-width: 600px;
   margin: 100px auto 0;
@@ -47,8 +47,8 @@ body {
 }
 
 .btn:hover {
-  background-color: #222;
-  color: #fff;
+  background-color: #c8b6a6;
+  color: #222;
 }
 
 .button-direction {
@@ -67,4 +67,12 @@ body {
   border-radius: 0.25rem;
   cursor: pointer;
   display: none;
+}
+
+.correct {
+  background-color: #9aeabc;
+}
+
+.wrong {
+  background-color: #ff9393;
 }

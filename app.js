@@ -131,7 +131,7 @@ const questions = [
   },
 ];
 
-const question = document.getElementById("question");
+const question = document.querySelector(".question");
 const answer = document.querySelector(".answer-buttons");
 const nextButton = document.querySelector(".next-btn");
 const previousButton = document.querySelector(".previous-btn");
@@ -150,6 +150,74 @@ function showQuestion() {
   let questionNo = currentQuestionId + 1;
   question.innerHTML = questionNo + ". " + currentQuestion.question;
   console.log(currentQuestion);
+
+  const allAnswers = questions[0].incorrect_answers.concat(
+    currentQuestion.correct_answer
+  );
+  const shuffledAnswers = shuffleArray(allAnswers);
+  const answerButtons = document.querySelectorAll(".answer-buttons button");
+
+  answerButtons.forEach((button, index) => {
+    button.textContent = shuffledAnswers[index];
+
+    button.addEventListener("click", () => {
+      if (button.textContent === currentQuestion.correct_answer) {
+        button.classList.add("correct");
+        console.log("Correct");
+      } else {
+        button.classList.add("wrong");
+        console.log("wrong");
+      }
+
+      //   // Disable other buttons
+      //   if (answerButtons) {
+      //     Array.from(answerButtons.children).forEach((otherButton) => {
+      //       if (otherButton !== button) {
+      //         otherButton.disabled = true;
+      //       }
+      //     });
+      //   } else {
+      //     console.log("error");
+      //   }
+
+      //   Array.from(answerButtons.children).forEach((button) => {
+      //     if (button.textContent === currentQuestion.correct_answer) {
+      //       button.classList.add("correct");
+      //     }
+      //     button.disabled = true;
+      //   });
+      console.log(button.textContent);
+    });
+  });
+
+  //   allAnswers.forEach((answer) => {
+  //     if (answer === questions[0].correct_answer) {
+  //       console.log(`${answer}: is correct`);
+  //     }
+  //     console.log(answer);
+  //   });
 }
 
-showQuestion();
+function shuffleArray(array) {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  console.log(shuffled);
+  return shuffled;
+}
+
+startQuiz();
+
+// const allAnswers = questions[0].incorrect_answers.concat(
+//   questions[0].correct_answer
+// );
+// const shuffledAnswers = shuffleArray(allAnswers);
+// const answerButtons = document.querySelectorAll(".answer-buttons button");
+// answerButtons.forEach((button, index) => {
+//   button.textContent = shuffledAnswers[index];
+// });
+
+// console.log(allAnswers);
+// console.log(shuffledAnswers);
