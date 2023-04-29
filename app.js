@@ -1,4 +1,4 @@
-fetch("https://opentdb.com/api.php?amount=15&difficulty=easy&type=multiple")
+fetch("https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple")
   // fetch("https://opentdb.com/api.php?amount=10&category=22")
   .then((response) => response.json())
   .then((data) => {
@@ -20,7 +20,7 @@ fetch("https://opentdb.com/api.php?amount=15&difficulty=easy&type=multiple")
     }
 
     function showQuestion() {
-      nextButton.classList.add("hidden");
+      //   nextButton.classList.add("hidden");
       nextButton.innerHTML = "Next";
 
       let currentQuestion = questions[currentQuestionId];
@@ -91,6 +91,9 @@ fetch("https://opentdb.com/api.php?amount=15&difficulty=easy&type=multiple")
       resetButtons();
       question.innerHTML = `You scored ${score} / ${questions.length}`;
       nextButton.innerHTML = "Play Again";
+      nextButton.addEventListener("click", () => {
+        location.reload();
+      });
     }
 
     function resetButtons() {
