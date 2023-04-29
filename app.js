@@ -1,4 +1,4 @@
-fetch("https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple")
+fetch("https://opentdb.com/api.php?amount=3&difficulty=easy&type=multiple")
   // fetch("https://opentdb.com/api.php?amount=10&category=22")
   .then((response) => response.json())
   .then((data) => {
@@ -89,6 +89,9 @@ fetch("https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple")
 
     function showScore() {
       resetButtons();
+      Array.from(answerButtons).forEach((button) => {
+        button.classList.add("hidden");
+      });
       question.innerHTML = `You scored ${score} / ${questions.length}`;
       nextButton.innerHTML = "Play Again";
       nextButton.addEventListener("click", () => {
