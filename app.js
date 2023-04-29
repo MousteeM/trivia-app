@@ -1,4 +1,4 @@
-fetch("https://opentdb.com/api.php?amount=3&difficulty=easy&type=multiple")
+fetch("https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple")
   // fetch("https://opentdb.com/api.php?amount=10&category=22")
   .then((response) => response.json())
   .then((data) => {
